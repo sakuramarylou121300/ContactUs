@@ -1,5 +1,4 @@
-
-<div class="border-2 w-4/12 mx-auto">
+<div class="w-4/12 mx-auto">
     <div class="mt-24">
         <h1 class="text-center text-4xl font-extrabold">Contact Us</h1>
         <div class="text-gray-600 flex justify-center mt-4">
@@ -18,7 +17,13 @@
         </div>
         <div class="mt-5">
             <label for="message" class="block font-semibold">Your message</label>
-            <input type="text">
+            <textarea id="w3review" name="w3review" rows="6" cols="50" class="border border-gray-300 block w-full rounded-md"></textarea>
         </div>
+
+        <button 
+            wire:loading.attr="disabled" 
+            wire:loading.class="bg-blue-500"
+            type="submit"
+        class="block mt-3 px-4  py-2 bg-emerald-900 text-white font-semibold rounded hover:bg-emerald-800">Send Message</button>
     </div>
 </div>
