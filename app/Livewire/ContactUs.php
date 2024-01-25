@@ -5,20 +5,22 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use App\Models\Contact;
-// use Livewire\WithPagination;
+use Livewire\WithPagination;
 
 class ContactUs extends Component
 {
 
+    use WithPagination;
+
     // THIS IS FOR THE VALIDATION
-    #[Rule('required| email| max:255')]
+    #[Rule('required|email|max:255')]
     public $email;
 
-    #[Rule('required| min:5| max:255')]
+    #[Rule('required|min:5|max:255')]
     public $subject;
 
-    #[Rule('required| min:3')]
-    public $message;
+    #[Rule('required|min:3')]
+    public $your_message;
 
     public function render()
     {
@@ -32,10 +34,10 @@ class ContactUs extends Component
         // VALIDATE 
         $validate = $this->validate();
 
-        $register = Register::create($validate);
+        $contact = Contact::create($validate);
 
         // REMOVE VALUES AFTER CREATE
-        $this->reset('email', 'subject', 'message');
+        $this->reset('email', 'subject', 'your_message');
 
         // GIVE MESSAGE AFTER CREATE
         session()->flash('success', 'User Created!');
@@ -43,6 +45,6 @@ class ContactUs extends Component
         // // RESET PAGE AFTER, GO TO FIRST PAGE
         // $this->resetPage();
 
-        $this->dispatch('user-created', $register);
+        // $this->dispatch('contact-created', $contact);
     }
 }
